@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moments Gallery</title>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hero">
+        <p class="hero-label">A little collection of memories</p>
+        <h1>Moments Gallery</h1>
+        <p class="hero-text">Beautiful moments, captured forever.</p>
+    </header>
+
+    <main class="gallery-section">
+        <div class="categories" aria-label="Filter photos">
+            <button class="filter-button active" type="button" data-filter="all">All</button>
+            <button class="filter-button" type="button" data-filter="nature">Nature</button>
+            <button class="filter-button" type="button" data-filter="travel">Travel</button>
+            <button class="filter-button" type="button" data-filter="architecture">Architecture</button>
+        </div>
+
+        <div class="gallery">
+            <button class="photo" type="button" data-category="nature" aria-label="View Mountain Lake">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80" alt="A quiet mountain lake" loading="lazy">
+                <span class="photo-info">
+                    <span class="photo-title">Mountain Lake</span>
+                    <span class="photo-tag">Nature</span>
+                </span>
+            </button>
+
+            <button class="photo" type="button" data-category="travel" aria-label="View Beach Days">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80" alt="A sunny beach with clear blue water" loading="lazy">
+                <span class="photo-info">
+                    <span class="photo-title">Beach Days</span>
+                    <span class="photo-tag">Travel</span>
+                </span>
+            </button>
+
+            <button class="photo" type="button" data-category="architecture" aria-label="View Glass and Steel">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80" alt="A tall modern glass building" loading="lazy">
+                <span class="photo-info">
+                    <span class="photo-title">Glass and Steel</span>
+                    <span class="photo-tag">Architecture</span>
+                </span>
+            </button>
+
+            <button class="photo" type="button" data-category="nature" aria-label="View Forest Path">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80" alt="Tall trees in a green forest" loading="lazy">
+                <span class="photo-info">
+                    <span class="photo-title">Forest Path</span>
+                    <span class="photo-tag">Nature</span>
+                </span>
+            </button>
+
+            <button class="photo" type="button" data-category="travel" aria-label="View Paris Evenings">
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80" alt="The Eiffel Tower in Paris" loading="lazy">
+                <span class="photo-info">
+                    <span class="photo-title">Paris Evenings</span>
+                    <span class="photo-tag">Travel</span>
+                </span>
+            </button>
+
+            <button class="photo" type="button" data-category="architecture" aria-label="View City Curves">
+                <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80" alt="A modern building with curved lines" loading="lazy">
+                <span class="photo-info">
+                    <span class="photo-title">City Curves</span>
+                    <span class="photo-tag">Architecture</span>
+                </span>
+            </button>
+
+            <button class="photo" type="button" data-category="nature" aria-label="View Golden Fields">
+                <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=900&q=80" alt="A green field under a bright sky" loading="lazy">
+                <span class="photo-info">
+                    <span class="photo-title">Golden Fields</span>
+                    <span class="photo-tag">Nature</span>
+                </span>
+            </button>
+
+            <button class="photo" type="button" data-category="travel" aria-label="View Venice Canals">
+                <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=900&q=80" alt="A canal in Venice with old buildings" loading="lazy">
+                <span class="photo-info">
+                    <span class="photo-title">Venice Canals</span>
+                    <span class="photo-tag">Travel</span>
+                </span>
+            </button>
+
+            <button class="photo" type="button" data-category="architecture" aria-label="View A Quiet Home">
+                <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=900&q=80" alt="A white modern house" loading="lazy">
+                <span class="photo-info">
+                    <span class="photo-title">A Quiet Home</span>
+                    <span class="photo-tag">Architecture</span>
+                </span>
+            </button>
+        </div>
+    </main>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Photo preview">
+        <button class="lightbox-close" type="button" aria-label="Close photo">&times;</button>
+        <button class="lightbox-arrow previous" type="button" aria-label="Previous photo">&#10094;</button>
+
+        <img id="lightbox-image" src="" alt="">
+        <div class="lightbox-info">
+            <p class="lightbox-category" id="lightbox-category"></p>
+            <h2 class="lightbox-title" id="lightbox-title"></h2>
+        </div>
+
+        <button class="lightbox-arrow next" type="button" aria-label="Next photo">&#10095;</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Moments Gallery | Made with creativity</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
