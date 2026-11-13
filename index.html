@@ -3,116 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moments Gallery</title>
+    <meta name="description" content="Moments Gallery is a dark, premium photo gallery featuring nature, travel and architecture photography with search, category filters and a full-screen lightbox.">
+    <meta name="theme-color" content="#0c0c0e">
+    <title>Moments Gallery &mdash; A Curated Collection</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="hero">
-        <p class="hero-label">A little collection of memories</p>
-        <h1>Moments Gallery</h1>
-        <p class="hero-text">Beautiful moments, captured forever.</p>
+    <header class="site-header">
+        <a class="brand" href="#top" aria-label="Moments Gallery home">
+            <span class="brand-mark" aria-hidden="true">M</span>
+            <span class="brand-text">Moments <span>Gallery</span></span>
+        </a>
+        <p class="header-note">Curated visual stories &middot; 2026</p>
     </header>
 
-    <main class="gallery-section">
-        <div class="categories" aria-label="Filter photos">
-            <button class="filter-button active" type="button" data-filter="all">All</button>
-            <button class="filter-button" type="button" data-filter="nature">Nature</button>
-            <button class="filter-button" type="button" data-filter="travel">Travel</button>
-            <button class="filter-button" type="button" data-filter="architecture">Architecture</button>
-        </div>
+    <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+            <p class="hero-label">A little collection of memories</p>
+            <h1 id="hero-title">Every frame,<br><em>a quiet story.</em></h1>
+            <p class="hero-text">Beautiful moments, captured forever. Wander through a handpicked collection of nature, travel and architecture.</p>
 
-        <div class="gallery">
-            <button class="photo" type="button" data-category="nature" aria-label="View Mountain Lake">
-                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80" alt="A quiet mountain lake" loading="lazy">
-                <span class="photo-info">
-                    <span class="photo-title">Mountain Lake</span>
-                    <span class="photo-tag">Nature</span>
+            <form class="search" id="search-form" role="search">
+                <span class="search-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="m20 20-3.5-3.5"></path>
+                    </svg>
                 </span>
-            </button>
+                <input class="search-input" id="search-input" type="search" placeholder="Search places, moods or categories&hellip;" autocomplete="off" aria-label="Search photos by title, category or keyword">
+                <button class="search-clear" id="search-clear" type="button" aria-label="Clear search" hidden>&times;</button>
+            </form>
+        </section>
 
-            <button class="photo" type="button" data-category="travel" aria-label="View Beach Days">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80" alt="A sunny beach with clear blue water" loading="lazy">
-                <span class="photo-info">
-                    <span class="photo-title">Beach Days</span>
-                    <span class="photo-tag">Travel</span>
-                </span>
-            </button>
+        <section class="gallery-section" aria-labelledby="gallery-heading">
+            <h2 class="visually-hidden" id="gallery-heading">Photo gallery</h2>
 
-            <button class="photo" type="button" data-category="architecture" aria-label="View Glass and Steel">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80" alt="A tall modern glass building" loading="lazy">
-                <span class="photo-info">
-                    <span class="photo-title">Glass and Steel</span>
-                    <span class="photo-tag">Architecture</span>
-                </span>
-            </button>
+            <div class="gallery-toolbar">
+                <div class="categories" role="group" aria-label="Filter photos by category">
+                    <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All</button>
+                    <button class="filter-button" type="button" data-filter="nature" aria-pressed="false">Nature</button>
+                    <button class="filter-button" type="button" data-filter="travel" aria-pressed="false">Travel</button>
+                    <button class="filter-button" type="button" data-filter="architecture" aria-pressed="false">Architecture</button>
+                </div>
+                <p class="result-count" id="result-count" aria-live="polite">12 moments in the collection</p>
+            </div>
 
-            <button class="photo" type="button" data-category="nature" aria-label="View Forest Path">
-                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80" alt="Tall trees in a green forest" loading="lazy">
-                <span class="photo-info">
-                    <span class="photo-title">Forest Path</span>
-                    <span class="photo-tag">Nature</span>
-                </span>
-            </button>
+            <div class="gallery" id="gallery">
+                <button class="photo photo--tall" type="button" data-category="nature" data-keywords="mountain lake water reflection alps calm landscape" data-full="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" aria-label="Open Mountain Lake in full-screen view">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A quiet mountain lake surrounded by peaks" loading="lazy">
+                    <span class="photo-shade" aria-hidden="true"></span>
+                    <span class="photo-open" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17 17 7"></path>
+                            <path d="M9 7h8v8"></path>
+                        </svg>
+                    </span>
+                    <span class="photo-info">
+                        <span class="photo-tag">Nature</span>
+                        <span class="photo-title">Mountain Lake</span>
+                    </span>
+                </button>
 
-            <button class="photo" type="button" data-category="travel" aria-label="View Paris Evenings">
-                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80" alt="The Eiffel Tower in Paris" loading="lazy">
-                <span class="photo-info">
-                    <span class="photo-title">Paris Evenings</span>
-                    <span class="photo-tag">Travel</span>
-                </span>
-            </button>
+                <button class="photo photo--short" type="button" data-category="travel" data-keywords="beach ocean sea sand summer tropical blue water" data-full="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" aria-label="Open Beach Days in full-screen view">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A sunny beach with clear blue water" loading="lazy">
+                    <span class="photo-shade" aria-hidden="true"></span>
+                    <span class="photo-open" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17 17 7"></path>
+                            <path d="M9 7h8v8"></path>
+                        </svg>
+                    </span>
+                    <span class="photo-info">
+                        <span class="photo-tag">Travel</span>
+                        <span class="photo-title">Beach Days</span>
+                    </span>
+                </button>
 
-            <button class="photo" type="button" data-category="architecture" aria-label="View City Curves">
-                <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80" alt="A modern building with curved lines" loading="lazy">
-                <span class="photo-info">
-                    <span class="photo-title">City Curves</span>
-                    <span class="photo-tag">Architecture</span>
-                </span>
-            </button>
+                <button class="photo photo--medium" type="button" data-category="architecture" data-keywords="glass steel building skyscraper city modern window" data-full="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" aria-label="Open Glass and Steel in full-screen view">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A tall modern glass building" loading="lazy">
+                    <span class="photo-shade" aria-hidden="true"></span>
+                    <span class="photo-open" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17 17 7"></path>
+                            <path d="M9 7h8v8"></path>
+                        </svg>
+                    </span>
+                    <span class="photo-info">
+                        <span class="photo-tag">Architecture</span>
+                        <span class="photo-title">Glass &amp; Steel</span>
+                    </span>
+                </button>
 
-            <button class="photo" type="button" data-category="nature" aria-label="View Golden Fields">
-                <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=900&q=80" alt="A green field under a bright sky" loading="lazy">
-                <span class="photo-info">
-                    <span class="photo-title">Golden Fields</span>
-                    <span class="photo-tag">Nature</span>
-                </span>
-            </button>
+                <button class="photo photo--tall" type="button" data-category="nature" data-keywords="forest trees green path woods sunlight" data-full="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" aria-label="Open Forest Path in full-screen view">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Tall trees in a green forest" loading="lazy">
+                    <span class="photo-shade" aria-hidden="true"></span>
+                    <span class="photo-open" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17 17 7"></path>
+                            <path d="M9 7h8v8"></path>
+                        </svg>
+                    </span>
+                    <span class="photo-info">
+                        <span class="photo-tag">Nature</span>
+                        <span class="photo-title">Forest Path</span>
+                    </span>
+                </button>
 
-            <button class="photo" type="button" data-category="travel" aria-label="View Venice Canals">
-                <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=900&q=80" alt="A canal in Venice with old buildings" loading="lazy">
-                <span class="photo-info">
-                    <span class="photo-title">Venice Canals</span>
-                    <span class="photo-tag">Travel</span>
-                </span>
-            </button>
+                <button class="photo photo--medium" type="button" data-category="travel" data-keywords="paris eiffel tower france evening city romance" data-full="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" aria-label="Open Paris Evenings in full-screen view">
+                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="The Eiffel Tower in Paris at dusk" loading="lazy">
+                    <span class="photo-shade" aria-hidden="true"></span>
+                    <span class="photo-open" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17 17 7"></path>
+                            <path d="M9 7h8v8"></path>
+                        </svg>
+                    </span>
+                    <span class="photo-info">
+                        <span class="photo-tag">Travel</span>
+                        <span class="photo-title">Paris Evenings</span>
+                    </span>
+                </button>
 
-            <button class="photo" type="button" data-category="architecture" aria-label="View A Quiet Home">
-                <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=900&q=80" alt="A white modern house" loading="lazy">
-                <span class="photo-info">
-                    <span class="photo-title">A Quiet Home</span>
-                    <span class="photo-tag">Architecture</span>
-                </span>
-            </button>
-        </div>
+                <button class="photo photo--short" type="button" data-category="architecture" data-keywords="curves building modern lines urban design" data-full="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" aria-label="Open City Curves in full-screen view">
+                    <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A modern building with curved lines" loading="lazy">
+                    <span class="photo-shade" aria-hidden="true"></span>
+                    <span class="photo-open" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17 17 7"></path>
+                            <path d="M9 7h8v8"></path>
+                        </svg>
+                    </span>
+                    <span class="photo-info">
+                        <span class="photo-tag">Architecture</span>
+                        <span class="photo-title">City Curves</span>
+                    </span>
+                </button>
+
+                <button class="photo photo--medium" type="button" data-category="nature" data-keywords="field grass golden sky countryside meadow" data-full="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" aria-label="Open Golden Fields in full-screen view">
+                    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A green field under a bright sky" loading="lazy">
+                    <span class="photo-shade" aria-hidden="true"></span>
+                    <span class="photo-open" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17 17 7"></path>
+                            <path d="M9 7h8v8"></path>
+                        </svg>
+                    </span>
+                    <span class="photo-info">
+                        <span class="photo-tag">Nature</span>
+                        <span class="photo-title">Golden Fields</span>
+                    </span>
+                </button>
+
+                <button class="photo photo--tall" type="button" data-category="travel" data-keywords="venice canal italy boat water old town" data-full="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" aria-label="Open Venice Canals in full-screen view">
+                    <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A canal in Venice lined with old buildings" loading="lazy">
+                    <span class="photo-shade" aria-hidden="true"></span>
+                    <span class="photo-open" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17 17 7"></path>
+                            <path d="M9 7h8v8"></path>
+                        </svg>
+                    </span>
+                    <span class="photo-info">
+                        <span class="photo-tag">Travel</span>
+                        <span class="photo-title">Venice Canals</span>
+                    </span>
+                </button>
+
+                <button class="photo photo--medium" type="button" data-category="architecture" data-keywords="house home modern white minimal architecture" data-full="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" aria-label="Open A Quiet Home in full-screen view">
+                    <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A white modern house" loading="lazy">
+                    <span class="photo-shade" aria-hidden="true"></span>
+                    <span class="photo-open" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17 17 7"></path>
+                            <path d="M9 7h8v8"></path>
+                        </svg>
+                    </span>
+                    <span class="photo-info">
+                        <span class="photo-tag">Architecture</span>
+                        <span class="photo-title">A Quiet Home</span>
+                    </span>
+                </button>
+
+                <button class="photo photo--short" type="button" data-category="nature" data-keywords="alps mountain snow peak alpine landscape" data-full="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" aria-label="Open Alpine Silence in full-screen view">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Snowy mountain peaks under a clear sky" loading="lazy">
+                    <span class="photo-shade" aria-hidden="true"></span>
+                    <span class="photo-open" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17 17 7"></path>
+                            <path d="M9 7h8v8"></path>
+                        </svg>
+                    </span>
+                    <span class="photo-info">
+                        <span class="photo-tag">Nature</span>
+                        <span class="photo-title">Alpine Silence</span>
+                    </span>
+                </button>
+
+                <button class="photo photo--tall" type="button" data-category="architecture" data-keywords="skyline city buildings urban skyscraper towers" data-full="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" aria-label="Open Skyline Lines in full-screen view">
+                    <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A city skyline filled with tall buildings" loading="lazy">
+                    <span class="photo-shade" aria-hidden="true"></span>
+                    <span class="photo-open" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17 17 7"></path>
+                            <path d="M9 7h8v8"></path>
+                        </svg>
+                    </span>
+                    <span class="photo-info">
+                        <span class="photo-tag">Architecture</span>
+                        <span class="photo-title">Skyline Lines</span>
+                    </span>
+                </button>
+
+                <button class="photo photo--medium" type="button" data-category="travel" data-keywords="coast beach cliff ocean waves seaside escape" data-full="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" aria-label="Open Coastal Escape in full-screen view">
+                    <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="A quiet coastal beach with soft waves" loading="lazy">
+                    <span class="photo-shade" aria-hidden="true"></span>
+                    <span class="photo-open" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17 17 7"></path>
+                            <path d="M9 7h8v8"></path>
+                        </svg>
+                    </span>
+                    <span class="photo-info">
+                        <span class="photo-tag">Travel</span>
+                        <span class="photo-title">Coastal Escape</span>
+                    </span>
+                </button>
+            </div>
+
+            <div class="empty-state" id="empty-state" hidden>
+                <p class="empty-title">No moments found</p>
+                <p class="empty-text">Try a different search or clear the filters to see the whole collection.</p>
+                <button class="empty-reset" id="empty-reset" type="button">Show all moments</button>
+            </div>
+        </section>
     </main>
 
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Photo preview">
-        <button class="lightbox-close" type="button" aria-label="Close photo">&times;</button>
-        <button class="lightbox-arrow previous" type="button" aria-label="Previous photo">&#10094;</button>
+    <footer class="site-footer">
+        <p>&copy; 2026 Moments Gallery</p>
+        <p class="footer-note">Made with HTML, CSS &amp; JavaScript</p>
+    </footer>
 
-        <img id="lightbox-image" src="" alt="">
-        <div class="lightbox-info">
-            <p class="lightbox-category" id="lightbox-category"></p>
-            <h2 class="lightbox-title" id="lightbox-title"></h2>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="lightbox-title">
+        <div class="lightbox-topbar">
+            <span class="lightbox-count" id="lightbox-count">01 / 12</span>
+            <button class="lightbox-close" type="button" aria-label="Close photo">&times;</button>
         </div>
 
-        <button class="lightbox-arrow next" type="button" aria-label="Next photo">&#10095;</button>
-    </div>
+        <button class="lightbox-arrow previous" type="button" aria-label="Previous photo">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 6-6 6 6 6"></path>
+            </svg>
+        </button>
 
-    <footer>
-        <p>&copy; 2026 Moments Gallery | Made with creativity</p>
-    </footer>
+        <figure class="lightbox-figure">
+            <img class="lightbox-image" id="lightbox-image" src="" alt="">
+            <figcaption class="lightbox-caption">
+                <p class="lightbox-category" id="lightbox-category"></p>
+                <h2 class="lightbox-title" id="lightbox-title"></h2>
+            </figcaption>
+        </figure>
+
+        <button class="lightbox-arrow next" type="button" aria-label="Next photo">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 6 6 6-6 6"></path>
+            </svg>
+        </button>
+    </div>
 
     <script src="script.js"></script>
 </body>
